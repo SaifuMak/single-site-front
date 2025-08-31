@@ -25,14 +25,64 @@ export async function fetchSiteDataByHost(host: string): Promise<SiteData> {
       themeTokens: { brand: '#4f46e5' },
     },
     content: {
-      menu: [{ label: 'Home', href: '/' }],
-      hero: { title: 'Welcome to Acme', subtitle: 'Built with Next.js templates' },
-      services: { items: [
-        { title: 'Design', desc: 'UI/UX' },
-        { title: 'Development', desc: 'Web apps' },
-        { title: 'SEO', desc: 'Get found online' },
-      ]},
-      about: { heading: 'About Acme', body: 'We craft digital experiences.' }
+      menu: [
+        { label: 'Home', href: '#home' },
+        { label: 'Services', href: '#services' },
+        { label: 'About', href: '#about' },
+        { label: 'Gallery', href: '#gallery' },
+        { label: 'Testimonials', href: '#testimonials' },
+        { label: 'Contact', href: '#contact' },
+      ],
+      hero: {
+        title: 'Welcome to Acme',
+        subtitle: 'Built with Next.js templates',
+        image: '/images/hero.jpg',
+        cta: { label: 'Get Started', href: '#contact' },
+      },
+      about: {
+        heading: 'About Acme',
+        body: 'We craft digital experiences with passion and precision.',
+        image: '/images/about.jpg',
+      },
+      services: {
+        items: [
+          { title: 'Design', desc: 'UI/UX & branding' },
+          { title: 'Development', desc: 'Next.js + Django apps' },
+          { title: 'SEO', desc: 'Get found online' },
+        ],
+      },
+      gallery: {
+        images: [
+          { src: '/images/g1.jpg', alt: 'Project 1' },
+          { src: '/images/g2.jpg', alt: 'Project 2' },
+          { src: '/images/g3.jpg', alt: 'Project 3' },
+        ],
+      },
+      testimonials: {
+        items: [
+          { quote: 'Amazing team and great results!', author: 'Jerin' },
+          { quote: 'Super fast delivery and quality work.' },
+        ],
+      },
+      cta: {
+        heading: 'Ready to start your project?',
+        button: { label: 'Contact us', href: '#contact' },
+      },
+      footer: {
+        columns: [
+          {
+            title: 'Company',
+            links: [
+              { label: 'About', href: '#about' },
+              { label: 'Services', href: '#services' },
+            ],
+          },
+          {
+            title: 'Social',
+            links: [{ label: 'Instagram', href: 'https://instagram.com' }],
+          },
+        ],
+      },
     },
   }
 
@@ -45,19 +95,21 @@ export async function fetchSiteDataByHost(host: string): Promise<SiteData> {
       themeTokens: { brand: '#16a34a' },
     },
     content: {
-      menu: [{ label: 'Home', href: '/' }],
+      menu: [{ label: 'Home', href: '#home' }],
       hero: { title: 'Beta Corp', subtitle: 'Switch layouts instantly' },
       about: { heading: 'About Beta', body: 'Another tenant, same data model.' },
-      services: { items: [
-        { title: 'Consulting', desc: 'Strategy & ops' },
-        { title: 'Automation', desc: 'Workflow magic' },
-      ]},
+      services: {
+        items: [
+          { title: 'Consulting', desc: 'Strategy & ops' },
+          { title: 'Automation', desc: 'Workflow magic' },
+        ],
+      },
     },
   }
 
   // Simple “multi-tenant” demo by host:
   // - http://localhost:3000 -> demoA
-  // - http://127.0.0.1:3000  -> demoB (just to see switching quickly)
+  // - http://127.0.0.1:3000  -> demoB
   if (host.startsWith('127.0.0.1')) return demoB
   return demoA
 }
